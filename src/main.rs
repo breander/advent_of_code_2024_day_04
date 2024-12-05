@@ -4,7 +4,7 @@ use std::fs;
 fn main() {
     // get the command line arguments
     let args: Vec<String> = env::args().collect();
-    
+
     // check for filename
     if args.len() < 2 {
         println!("No file name specified!");
@@ -117,5 +117,45 @@ fn main() {
     println!("up: {up}");
     println!("up_right: {up_right}");
     println!("part 1 XMAS count: {part1_count}");
+
+    // Part - 2
+    let mut part2_count = 0;
+
+    // iterate over grid to check for XMAS
+    for row in 0..line_count {
+        for col in 0..col_count {
+            if grid[row][col] == 'A' {
+                let mut two_count = 0;
+
+                if (col + 1) < col_count && (row + 1) < line_count && (col as i32 - 1) >= 0 && (row as i32 - 1) >= 0  {
+                    // check down + right
+                    if grid[row-1][col-1] == 'M' && grid[row+1][col+1] == 'S' {
+                        two_count += 1;
+                    }
+
+                    // check down + left
+                    if grid[row-1][col+1] == 'M' && grid[row+1][col-1] == 'S' {
+                        two_count += 1;
+                    }
+
+                    // check up + left
+                    if grid[row+1][col+1] == 'M' && grid[row-1][col-1] == 'S' {
+                        two_count += 1;
+                    }
+
+                    // check up + right
+                    if grid[row+1][col-1] == 'M' && grid[row-1][col+1] == 'S' {
+                        two_count += 1;
+                    }
+
+                    if two_count == 2 {
+                        part2_count += 1;
+                    }
+                }
+            }
+        }
+    }
+
+    println!("part 2 X-MAS count: {part2_count}");
 }
 
