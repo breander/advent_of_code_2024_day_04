@@ -43,7 +43,7 @@ fn main() {
     for row in 0..line_count {
         for col in 0..col_count {
             // check right
-            if (col + 4) <= col_count {
+            if (col + 3) < col_count {
                 if grid[row][col] == 'X' && grid[row][col+1] == 'M' && grid[row][col+2] == 'A' && grid[row][col+3] == 'S' {
                     part1_count += 1;
                     right += 1;
@@ -51,7 +51,7 @@ fn main() {
             }
 
             // check right + down
-            if (col + 4) <= col_count && (row + 4) <= line_count {
+            if (col + 3) < col_count && (row + 3) < line_count {
                 if grid[row][col] == 'X' && grid[row+1][col+1] == 'M' && grid[row+2][col+2] == 'A' && grid[row+3][col+3] == 'S' {
                     part1_count += 1;
                     right_down += 1;
@@ -59,7 +59,7 @@ fn main() {
             }
 
             // check down
-            if (row + 4) <= line_count {
+            if (row + 3) < line_count {
                 if grid[row][col] == 'X' && grid[row+1][col] == 'M' && grid[row+2][col] == 'A' && grid[row+3][col] == 'S' {
                     part1_count += 1;
                     down += 1;
@@ -67,7 +67,7 @@ fn main() {
             }
 
             // check down + left
-            if (row + 4) <= line_count && (col as i32 - 3) >= 0 {
+            if (row + 3) < line_count && (col as i32 - 3) >= 0 {
                 if grid[row][col] == 'X' && grid[row+1][col-1] == 'M' && grid[row+2][col-2] == 'A' && grid[row+3][col-3] == 'S' {
                     part1_count += 1;
                     down_left += 1;
@@ -99,7 +99,7 @@ fn main() {
             }
 
             // check up + right
-            if (row as i32 - 3) >= 0 && (col + 4) <= col_count {
+            if (row as i32 - 3) >= 0 && (col + 3) < col_count {
                 if grid[row][col] == 'X' && grid[row-1][col+1] == 'M' && grid[row-2][col+2] == 'A' && grid[row-3][col+3] == 'S' {
                     part1_count += 1;
                     up_right += 1;
